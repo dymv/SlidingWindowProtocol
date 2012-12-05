@@ -10,17 +10,19 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[80.0, 50.0]">
         </property>
     </property>
-    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={0, 22, 1440, 878}, maximized=false}">
+    <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={4, 22, 978, 569}, maximized=false}">
     </property>
-    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1227, 768]">
+    <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[765, 459]">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0076513293889">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8000599173413">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{412.526426373106, 132.3713304924242}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{374.0227864583334, 131.1464843750001}">
     </property>
-    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="1">
+    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="5">
     </property>
-    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.2">
+    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.1">
+    </property>
+    <property name="kChannelSize" class="ptolemy.data.expr.Parameter" value="5">
     </property>
     <class name="Channel" extends="ptolemy.actor.TypedCompositeActor">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[315.0, 50.0]">
@@ -95,6 +97,8 @@
         <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="1.0">
         </property>
         <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{300.0, 200.0}">
+        </property>
+        <property name="channelSize" class="ptolemy.data.expr.Parameter" value="0">
         </property>
         <port name="input" class="ptolemy.actor.TypedIOPort">
             <property name="input"/>
@@ -454,6 +458,8 @@
         </entity>
         <entity name="Server" class="ptolemy.domains.de.lib.Server">
             <property name="serviceTime" class="ptolemy.actor.parameters.PortParameter" value="1.5542313946046">
+            </property>
+            <property name="capacity" class="ptolemy.data.expr.Parameter" value="channelSize">
             </property>
             <property name="ServerIcon" class="ptolemy.vergil.icon.EditorIcon">
                 <property name="rectangle" class="ptolemy.vergil.kernel.attributes.RectangleAttribute">
@@ -859,7 +865,7 @@
       <entity name="state library" class="ptolemy.kernel.CompositeEntity"><input source="ptolemy/configs/basicUtilities.xml"></input><entity name="state" class="ptolemy.domains.modal.kernel.State"><property name="_centerName" class="ptolemy.kernel.util.Attribute"></property><property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory"></property></entity></entity>
     </configure>
                 </property>
-                <property name="currentPacketNumber" class="ptolemy.data.expr.Parameter" value="55">
+                <property name="currentPacketNumber" class="ptolemy.data.expr.Parameter" value="230">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -905,7 +911,7 @@
                     <property name="_location" class="ptolemy.kernel.util.Location" value="[35.0, 120.0]">
                     </property>
                 </property>
-                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="55">
+                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="230">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1013,7 +1019,7 @@
                     </property>
                     <property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory">
                     </property>
-                    <property name="_location" class="ptolemy.kernel.util.Location" value="[210.0, 495.0]">
+                    <property name="_location" class="ptolemy.kernel.util.Location" value="[195.0, 510.0]">
                     </property>
                 </entity>
                 <entity name="reportReceived" class="ptolemy.domains.modal.kernel.State">
@@ -1041,10 +1047,6 @@
                 <relation name="relation3" class="ptolemy.domains.modal.kernel.Transition">
                     <property name="guardExpression" class="ptolemy.kernel.util.StringAttribute" value="expired_isPresent">
                     </property>
-                    <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute">
-                    </property>
-                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute">
-                    </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.6283185307179586">
                     </property>
                     <property name="gamma" class="ptolemy.data.expr.Parameter" value="0.7548846755426785">
@@ -1052,8 +1054,6 @@
                 </relation>
                 <relation name="relation4" class="ptolemy.domains.modal.kernel.Transition">
                     <property name="guardExpression" class="ptolemy.kernel.util.StringAttribute" value="expired_isPresent">
-                    </property>
-                    <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute">
                     </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.6283185307179586">
                     </property>
@@ -1065,7 +1065,7 @@
                     </property>
                     <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute" value="outPacket={t=0,n=currentPacketNumber};&#10;setTimer=timeout">
                     </property>
-                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="currentPacketNumber=currentPacketNumber+1;&#10;nextSendPacketNumber=packet.n+1;&#10;remainWindow=windowSize">
+                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="currentPacketNumber=currentPacketNumber+1;&#10;nextSendPacketNumber=packet.n+1;&#10;remainWindow=remainWindow+1">
                     </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="2.1836000870612833">
                         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
@@ -1087,7 +1087,7 @@
                 <relation name="relation6" class="ptolemy.domains.modal.kernel.Transition">
                     <property name="guardExpression" class="ptolemy.kernel.util.StringAttribute" value="packet_isPresent &amp;&amp; packet.t == 2">
                     </property>
-                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="currentPacketNumber=packet.n;&#10;nextSendPacketNumber=packet.n">
+                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="currentPacketNumber=packet.n;&#10;nextSendPacketNumber=packet.n;&#10;remainWindow=windowSize-1">
                     </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.6283185307179586">
                     </property>
@@ -1097,7 +1097,7 @@
                 <relation name="relation7" class="ptolemy.domains.modal.kernel.Transition">
                     <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute" value="outPacket={t=0,n=nextSendPacketNumber};&#10;setTimer=timeout">
                     </property>
-                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="nextSendPacketNumber=nextSendPacketNumber+1;&#10;currentPacketNumber=currentPacketNumber+1;&#10;remainWindow=windowSize-1">
+                    <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="nextSendPacketNumber=nextSendPacketNumber+1;&#10;currentPacketNumber=currentPacketNumber+1">
                     </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.6283185307179586">
                         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
@@ -1113,9 +1113,9 @@
                     </property>
                     <property name="setActions" class="ptolemy.domains.modal.kernel.CommitActionsAttribute" value="currentPacketNumber=currentPacketNumber+1;&#10;nextSendPacketNumber=nextSendPacketNumber+1;&#10;remainWindow=remainWindow-1">
                     </property>
-                    <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="2.6819546855743184">
+                    <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="2.917644744904473">
                     </property>
-                    <property name="gamma" class="ptolemy.data.expr.Parameter" value="-0.896317387561285">
+                    <property name="gamma" class="ptolemy.data.expr.Parameter" value="0.08035159803552823">
                     </property>
                 </relation>
                 <link port="init.outgoingPort" relation="relation"/>
@@ -1200,6 +1200,8 @@
         </property>
         <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="kForwardLossProb">
         </property>
+        <property name="channelSize" class="ptolemy.data.expr.Parameter" value="kChannelSize">
+        </property>
     </entity>
     <entity name="Reciever" class="ptolemy.actor.TypedCompositeActor">
         <property name="_location" class="ptolemy.kernel.util.Location" value="[655.0, 175.0]">
@@ -1243,7 +1245,7 @@
       <entity name="state library" class="ptolemy.kernel.CompositeEntity"><input source="ptolemy/configs/basicUtilities.xml"></input><entity name="state" class="ptolemy.domains.modal.kernel.State"><property name="_centerName" class="ptolemy.kernel.util.Attribute"></property><property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory"></property></entity></entity>
     </configure>
                 </property>
-                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="52">
+                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="228">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1270,7 +1272,7 @@
                 </property>
                 <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{342.0, 235.0}">
                 </property>
-                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="53">
+                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="229">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1301,8 +1303,6 @@
                     </property>
                 </port>
                 <entity name="init" class="ptolemy.domains.modal.kernel.State">
-                    <property name="refinementName" class="ptolemy.kernel.util.StringAttribute">
-                    </property>
                     <property name="isInitialState" class="ptolemy.data.expr.Parameter" value="true">
                     </property>
                     <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
@@ -1313,8 +1313,6 @@
                     </property>
                 </entity>
                 <entity name="receiving" class="ptolemy.domains.modal.kernel.State">
-                    <property name="refinementName" class="ptolemy.kernel.util.StringAttribute">
-                    </property>
                     <property name="_hideName" class="ptolemy.data.expr.SingletonParameter" value="true">
                     </property>
                     <property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory">
@@ -1361,16 +1359,12 @@
                 <relation name="relation3" class="ptolemy.domains.modal.kernel.Transition">
                     <property name="guardExpression" class="ptolemy.kernel.util.StringAttribute" value="packet_isPresent &amp;&amp; packet.t == 2">
                     </property>
-                    <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute">
-                    </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.6283185307179586">
                     </property>
                     <property name="gamma" class="ptolemy.data.expr.Parameter" value="1.65263419104353">
                     </property>
                 </relation>
                 <relation name="relation4" class="ptolemy.domains.modal.kernel.Transition">
-                    <property name="guardExpression" class="ptolemy.kernel.util.StringAttribute">
-                    </property>
                     <property name="outputActions" class="ptolemy.domains.modal.kernel.OutputActionsAttribute" value="outPacket={t=2, n=nextAwaitingPacketNumber}">
                     </property>
                     <property name="exitAngle" class="ptolemy.data.expr.Parameter" value="0.31733720308287305">
@@ -1420,7 +1414,7 @@
         <link port="ReceiverModel.outPacket" relation="relation2"/>
     </entity>
     <entity name="BackwardChannel" class="Channel">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[620.0, 340.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[610.0, 340.0]">
         </property>
         <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
@@ -1440,7 +1434,7 @@
         </property>
         <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[835.00048828125, 177.997314453125]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[425.0, 400.0]">
         </property>
     </entity>
     <relation name="relation10" class="ptolemy.actor.TypedIORelation">
@@ -1459,8 +1453,6 @@
     </relation>
     <relation name="relation4" class="ptolemy.actor.TypedIORelation">
     </relation>
-    <relation name="relation6" class="ptolemy.actor.TypedIORelation">
-    </relation>
     <relation name="relation8" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="-1">
         </property>
@@ -1475,6 +1467,12 @@
         <vertex name="vertex1" value="[570.0, 175.0]">
         </vertex>
     </relation>
+    <relation name="relation9" class="ptolemy.actor.TypedIORelation">
+        <property name="width" class="ptolemy.data.expr.Parameter" value="-1">
+        </property>
+        <vertex name="vertex1" value="[365.0, 355.0]">
+        </vertex>
+    </relation>
     <link port="MessageSource.output" relation="relation2"/>
     <link port="MessageSource.request" relation="relation4"/>
     <link port="Timer.expired" relation="relation"/>
@@ -1482,7 +1480,7 @@
     <link port="Sender.outPacket" relation="relation5"/>
     <link port="Sender.giveMeAPacket" relation="relation2"/>
     <link port="Sender.giveMeAPacket" relation="relation4"/>
-    <link port="Sender.packet" relation="relation6"/>
+    <link port="Sender.packet" relation="relation9"/>
     <link port="Sender.setTimer" relation="relation8"/>
     <link port="Sender.expired" relation="relation"/>
     <link port="Display.input" relation="relation5"/>
@@ -1491,7 +1489,7 @@
     <link port="Reciever.packet" relation="relation7"/>
     <link port="Reciever.outPacket" relation="relation10"/>
     <link port="BackwardChannel.input" relation="relation10"/>
-    <link port="BackwardChannel.output" relation="relation6"/>
+    <link port="BackwardChannel.output" relation="relation9"/>
     <link port="Display2.input" relation="relation7"/>
-    <link port="Display3.input" relation="relation10"/>
+    <link port="Display3.input" relation="relation9"/>
 </entity>
