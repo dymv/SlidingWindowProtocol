@@ -18,17 +18,17 @@
     </property>
     <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1211, 755]">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.5186690622596">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.6483363278245">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{430.7993286941216, 172.1923828124997}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{430.7993286941213, 172.1923828124996}">
     </property>
-    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="127.0">
+    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="31.0">
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
         </property>
     </property>
-    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.5">
+    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.1">
     </property>
-    <property name="kChannelSize" class="ptolemy.data.expr.Parameter" value="2000.0">
+    <property name="kChannelSize" class="ptolemy.data.expr.Parameter" value="varA*packetSize">
     </property>
     <property name="packetSize" class="ptolemy.data.expr.Parameter" value="200.0">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
@@ -163,7 +163,7 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -160.0]">
         </property>
     </property>
-    <property name="varA" class="ptolemy.data.expr.Parameter" value="channelSize/packetSize">
+    <property name="varA" class="ptolemy.data.expr.Parameter" value="1000">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -868,7 +868,7 @@
                 </property>
                 <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{691.5000000000002, 339.5000000000007}">
                 </property>
-                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="140">
+                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="66">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -906,7 +906,7 @@
                     <property name="_location" class="ptolemy.kernel.util.Location" value="[-275.0, 20.0]">
                     </property>
                 </property>
-                <property name="remainWindow" class="ptolemy.data.expr.Parameter" value="126.0">
+                <property name="remainWindow" class="ptolemy.data.expr.Parameter" value="-1.0">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -988,7 +988,7 @@
                     <property name="_location" class="ptolemy.kernel.util.Location" value="[-430.0, 200.0]">
                     </property>
                 </property>
-                <property name="isWaitingForLastPackageAck" class="ptolemy.data.expr.Parameter" value="0">
+                <property name="isWaitingForLastPackageAck" class="ptolemy.data.expr.Parameter" value="1">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1413,7 +1413,7 @@
       <entity name="state library" class="ptolemy.kernel.CompositeEntity"><input source="ptolemy/configs/basicUtilities.xml"></input><entity name="state" class="ptolemy.domains.modal.kernel.State"><property name="_centerName" class="ptolemy.kernel.util.Attribute"></property><property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory"></property></entity></entity>
     </configure>
                 </property>
-                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="139">
+                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="34">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1440,7 +1440,7 @@
                 </property>
                 <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{369.4739685058594, 224.7126221349789}">
                 </property>
-                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="140">
+                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="35">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1710,7 +1710,7 @@
         </property>
         <property name="_windowProperties" class="ptolemy.actor.gui.WindowPropertiesAttribute" value="{bounds={4, 22, 1436, 878}, maximized=false}">
         </property>
-        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[502, 283]">
+        <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[500, 274]">
         </property>
         <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, -250.0]">
         </property>
@@ -1721,8 +1721,8 @@
 <title>TimedPlotter</title>
 <xLabel></xLabel>
 <yLabel></yLabel>
-<xRange min="20.987710732100002" max="9999.3210440725"/>
-<yRange min="1.0" max="144.0"/>
+<xRange min="21.12324151" max="43316.123241515204"/>
+<yRange min="1.0" max="65.0"/>
 <default connected="no" marks="various" stems="yes"/>
 </plot>?>
         </configure>
