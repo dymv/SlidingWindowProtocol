@@ -5,7 +5,7 @@
     <property name="_createdBy" class="ptolemy.kernel.attributes.VersionAttribute" value="8.0.1">
     </property>
     <property name="DE Director" class="ptolemy.domains.de.kernel.DEDirector">
-        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="20000">
+        <property name="stopTime" class="ptolemy.data.expr.Parameter" value="1000">
         </property>
         <property name="stopWhenQueueIsEmpty" class="ptolemy.data.expr.Parameter" value="true">
         </property>
@@ -18,17 +18,17 @@
     </property>
     <property name="_vergilSize" class="ptolemy.actor.gui.SizeAttribute" value="[1211, 755]">
     </property>
-    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.7175699918062">
+    <property name="_vergilZoomFactor" class="ptolemy.data.expr.ExpertParameter" value="0.8104204097806">
     </property>
-    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{325.7397499741313, 146.8348144127045}">
+    <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{430.7993286941224, 172.1923828125}">
     </property>
-    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="127">
+    <property name="kWindowSize" class="ptolemy.data.expr.Parameter" value="127.0">
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
         </property>
     </property>
-    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.1">
+    <property name="kForwardLossProb" class="ptolemy.data.expr.Parameter" value="0.0">
     </property>
-    <property name="kChannelSize" class="ptolemy.data.expr.Parameter" value="20000">
+    <property name="kChannelSize" class="ptolemy.data.expr.Parameter" value="2000000">
     </property>
     <property name="packetSize" class="ptolemy.data.expr.Parameter" value="200.0">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
@@ -68,7 +68,7 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -60.0]">
         </property>
     </property>
-    <property name="ackPacketSize" class="ptolemy.data.expr.Parameter" value="16">
+    <property name="ackPacketSize" class="ptolemy.data.expr.Parameter" value="16.0">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -87,7 +87,7 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -80.0]">
         </property>
     </property>
-    <property name="second" class="ptolemy.data.expr.Parameter" value="1">
+    <property name="second" class="ptolemy.data.expr.Parameter" value="1.0">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -106,7 +106,7 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -40.0]">
         </property>
     </property>
-    <property name="packetDelay" class="ptolemy.data.expr.Parameter" value="packetSize/speed*second">
+    <property name="packetDelay" class="ptolemy.data.expr.Parameter" value="packetSize/speed">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -125,7 +125,7 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -120.0]">
         </property>
     </property>
-    <property name="ackPacketDelay" class="ptolemy.data.expr.Parameter" value="ackPacketSize/speed*second">
+    <property name="ackPacketDelay" class="ptolemy.data.expr.Parameter" value="ackPacketSize/speed">
         <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
         </property>
         <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -201,13 +201,13 @@
         <property name="_location" class="ptolemy.kernel.util.Location" value="[-80.0, -200.0]">
         </property>
     </property>
-    <property name="kCanSendNext" class="ptolemy.data.expr.Parameter" value="1">
+    <property name="kCanSendNext" class="ptolemy.data.expr.Parameter" value="21">
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
         </property>
     </property>
     <property name="kChannelDelay" class="ptolemy.data.expr.Parameter" value="channelSize/speed">
     </property>
-    <property name="kBackwardChannelDelay" class="ptolemy.data.expr.Parameter" value="0.0">
+    <property name="kBackwardChannelDelay" class="ptolemy.data.expr.Parameter" value="0">
         <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
         </property>
     </property>
@@ -856,7 +856,7 @@
     <entity name="MessageSource" class="ptolemy.domains.fsm.demo.ABP.DEMessageSource">
         <property name="maxDelay" class="ptolemy.data.expr.Parameter" value="0.5">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[25.0, 120.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[15.0, 110.0]">
         </property>
         <port name="output" class="ptolemy.actor.TypedIOPort">
             <property name="output"/>
@@ -875,7 +875,7 @@
         </port>
     </entity>
     <entity name="Timer" class="ptolemy.domains.fsm.demo.ABP.DETimer">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[-55.0, 180.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[-95.0, 185.0]">
         </property>
         <port name="expired" class="ptolemy.actor.TypedIOPort">
             <property name="output"/>
@@ -990,7 +990,7 @@
                 </property>
                 <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{940.4999999999997, 530.5000000000007}">
                 </property>
-                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="16045">
+                <property name="nextSendPacketNumber" class="ptolemy.data.expr.Parameter" value="48">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1028,7 +1028,7 @@
                     <property name="_location" class="ptolemy.kernel.util.Location" value="[-275.0, 20.0]">
                     </property>
                 </property>
-                <property name="remainWindow" class="ptolemy.data.expr.Parameter" value="126">
+                <property name="remainWindow" class="ptolemy.data.expr.Parameter" value="126.0">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1440,7 +1440,7 @@
         </property>
         <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[525.0, 85.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[570.0, -155.0]">
         </property>
     </entity>
     <entity name="ForwardChannel" class="Channel">
@@ -1514,7 +1514,7 @@
       <entity name="state library" class="ptolemy.kernel.CompositeEntity"><input source="ptolemy/configs/basicUtilities.xml"></input><entity name="state" class="ptolemy.domains.modal.kernel.State"><property name="_centerName" class="ptolemy.kernel.util.Attribute"></property><property name="_controllerFactory" class="ptolemy.vergil.modal.modal.HierarchicalStateControllerFactory"></property></entity></entity>
     </configure>
                 </property>
-                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="16044">
+                <property name="lastReceivedPacketNumber" class="ptolemy.data.expr.Parameter" value="47">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1541,7 +1541,7 @@
                 </property>
                 <property name="_vergilCenter" class="ptolemy.data.expr.ExpertParameter" value="{369.4739685058594, 224.7126221349789}">
                 </property>
-                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="16045">
+                <property name="nextAwaitingPacketNumber" class="ptolemy.data.expr.Parameter" value="48">
                     <property name="_hideName" class="ptolemy.kernel.util.SingletonAttribute">
                     </property>
                     <property name="_icon" class="ptolemy.vergil.icon.ValueIcon">
@@ -1773,9 +1773,9 @@
         </property>
         <property name="lossProbability" class="ptolemy.data.expr.Parameter" value="0.0">
         </property>
-        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="true">
-        </property>
         <property name="channelDelay" class="ptolemy.data.expr.Parameter" value="kBackwardChannelDelay">
+        </property>
+        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="true">
         </property>
     </entity>
     <entity name="Display2" class="ptolemy.actor.lib.gui.Display">
@@ -1783,7 +1783,7 @@
         </property>
         <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[825.0, 75.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[815.0, 90.0]">
         </property>
     </entity>
     <entity name="Display3" class="ptolemy.actor.lib.gui.Display">
@@ -1791,9 +1791,11 @@
         </property>
         <property name="_paneSize" class="ptolemy.actor.gui.SizeAttribute" value="[484, 164]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[10.0, 410.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[1135.0, 615.0]">
         </property>
-        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="true">
+        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="false">
+            <property name="_editorFactory" class="ptolemy.vergil.toolbox.VisibleParameterEditorFactory">
+            </property>
         </property>
     </entity>
     <entity name="TimedPlotter" class="ptolemy.actor.lib.gui.TimedPlotter">
@@ -1807,7 +1809,7 @@
         </property>
         <property name="_plotSize" class="ptolemy.actor.gui.SizeAttribute" value="[502, 283]">
         </property>
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[920.0, -155.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[985.0, -250.0]">
         </property>
         <configure>
 <?plotml <!DOCTYPE plot PUBLIC "-//UC Berkeley//DTD PlotML 1//EN"
@@ -1816,8 +1818,8 @@
 <title>TimedPlotter</title>
 <xLabel></xLabel>
 <yLabel></yLabel>
-<xRange min="1.3744417749" max="19999.3025845079"/>
-<yRange min="1.0" max="16247.0"/>
+<xRange min="21.0634940567" max="996.8561973885"/>
+<yRange min="1.0" max="48.0"/>
 <default connected="no" marks="various" stems="yes"/>
 </plot>?>
         </configure>
@@ -1835,17 +1837,17 @@
         </property>
     </entity>
     <entity name="InstanceOfValueWithTimestemp" class="ValueWithTimestemp">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[445.0, 5.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[450.0, -155.0]">
         </property>
     </entity>
     <entity name="InstanceOfValueWithTimestemp2" class="ValueWithTimestemp">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[730.0, 30.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[660.0, 90.0]">
         </property>
     </entity>
     <entity name="InstanceOfValueWithTimestemp3" class="ValueWithTimestemp">
-        <property name="_location" class="ptolemy.kernel.util.Location" value="[160.0, 465.0]">
+        <property name="_location" class="ptolemy.kernel.util.Location" value="[940.0, 615.0]">
         </property>
-        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="true">
+        <property name="_flipPortsHorizontal" class="ptolemy.data.expr.Parameter" value="false">
         </property>
     </entity>
     <relation name="relation10" class="ptolemy.actor.TypedIORelation">
@@ -1863,7 +1865,7 @@
     <relation name="relation8" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="-1">
         </property>
-        <vertex name="vertex1" value="[155.0, 235.0]">
+        <vertex name="vertex1" value="[135.0, 225.0]">
         </vertex>
     </relation>
     <relation name="relation" class="ptolemy.actor.TypedIORelation">
@@ -1877,7 +1879,7 @@
     <relation name="relation9" class="ptolemy.actor.TypedIORelation">
         <property name="width" class="ptolemy.data.expr.Parameter" value="-1">
         </property>
-        <vertex name="vertex1" value="[255.0, 350.0]">
+        <vertex name="vertex1" value="[235.0, 360.0]">
         </vertex>
     </relation>
     <relation name="relation2" class="ptolemy.actor.TypedIORelation">
